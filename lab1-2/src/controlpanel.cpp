@@ -10,11 +10,11 @@
 #include <QSlider>
 
 #include "controlpanel.h"
-#include"Figure/line.h"
-#include"Figure/cube.h"
-#include"Figure/pyramide.h"
-#include"Figure/triangle.h"
-#include"Figure/polygon.h"
+#include "Figure/line.h"
+#include "Figure/cube.h"
+#include "Figure/pyramide.h"
+#include "Figure/triangle.h"
+#include "Figure/polygon.h"
 
 #define KEY_LINES       ("GL_LINES")
 #define KEY_TRIANGLE    ("GL_TRIANGLES")
@@ -45,11 +45,11 @@ void ControlPanel::initControlElement()
     QLabel* lab1Label = new QLabel(tr("Primitives:"));
     QComboBox* primitivesBox = new QComboBox;
 
-    primitivesBox->addItem(tr(KEY_LINES));
-    primitivesBox->addItem(tr(KEY_TRIANGLE));
-    primitivesBox->addItem(tr(KEY_QUAD));
-    primitivesBox->addItem(tr(KEY_POLYGON));
-    primitivesBox->addItem(tr(KEY_PYRAMIDE));
+    primitivesBox->addItem(KEY_LINES);
+    primitivesBox->addItem(KEY_TRIANGLE);
+    primitivesBox->addItem(KEY_QUAD);
+    primitivesBox->addItem(KEY_POLYGON);
+    primitivesBox->addItem(KEY_PYRAMIDE);
 
     connect(primitivesBox, &QComboBox::currentTextChanged, this, &ControlPanel::handlePrimitiveBoxChanged);
 
@@ -110,10 +110,10 @@ void ControlPanel::initControlElement()
     QHBoxLayout* vSliderLayout3 = new QHBoxLayout;
     QHBoxLayout* vSliderLayout4 = new QHBoxLayout;
 
-    QLabel* x = new QLabel(tr("x: "));
-    QLabel* y = new QLabel(tr("y: "));
-    QLabel* w = new QLabel(tr("w:"));
-    QLabel* h = new QLabel(tr("h: "));
+    QLabel* x = new QLabel("x: ");
+    QLabel* y = new QLabel("y: ");
+    QLabel* w = new QLabel("w:");
+    QLabel* h = new QLabel("h: ");
 
     xSlider = new QSlider(Qt::Orientation::Horizontal);
     ySlider = new QSlider(Qt::Orientation::Horizontal);
@@ -130,12 +130,13 @@ void ControlPanel::initControlElement()
     wSlider->setMinimum(0);
     hSlider->setMinimum(0);
 
-    xSlider->setMaximum(currentFigure->minimumWidth());
-    ySlider->setMaximum(currentFigure->minimumHeight());
-    wSlider->setMaximum(currentFigure->minimumWidth());
-    hSlider->setMaximum(currentFigure->minimumHeight());
-    wSlider->setValue(currentFigure->minimumWidth());
-    hSlider->setValue(currentFigure->minimumHeight());
+    xSlider->setMaximum(currentFigure->width());
+    ySlider->setMaximum(currentFigure->height());
+    wSlider->setMaximum(currentFigure->width());
+    hSlider->setMaximum(currentFigure->height());
+
+    wSlider->setValue(currentFigure->width());
+    hSlider->setValue(currentFigure->height());
 
     xSlider->setToolTip(QString("x = %1").arg(xSlider->value()));
     ySlider->setToolTip(QString("y = %1").arg(ySlider->value()));
@@ -192,6 +193,7 @@ void ControlPanel::handlePrimitiveBoxChanged(QString text)
     else
         currentFigure = new Line();
 
+    // Вау, вот это костыль, ну Димасик, ну красава...
     hLayout->addWidget(currentFigure);
     // После выбора фигуры, задействовать значения с панели контроля.
     handleAlphaTest(transparencyBox->currentText());
@@ -221,9 +223,9 @@ void ControlPanel::handleScissorSliderTriggered(int)
 {
     currentFigure->setScissorTest(xSlider->value(), ySlider->value(), wSlider->value(), hSlider->value());
     xSlider->setToolTip(QString("x = %1").arg(xSlider->value()));
-    ySlider->setToolTip(QString("y = %1").arg(xSlider->value()));
-    wSlider->setToolTip(QString("w = %1").arg(xSlider->value()));
-    hSlider->setToolTip(QString("h = %1").arg(xSlider->value()));
+    ySlider->setToolTip(QString("y = %1").arg(ySlider->value()));
+    wSlider->setToolTip(QString("w = %1").arg(wSlider->value()));
+    hSlider->setToolTip(QString("h = %1").arg(hSlider->value()));
 }
 
 QString ControlPanel::getString(GLuint dig)

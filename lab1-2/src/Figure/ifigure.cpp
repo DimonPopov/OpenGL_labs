@@ -6,13 +6,13 @@
 IFigure::IFigure(QWidget* parent)
     : QOpenGLWidget(parent), xRotate(0), yRotate(0)
 {
-    setMinimumSize(400, 400);
+    setMinimumSize(600, 600);
 }
 
 void IFigure::initializeGL()
 {
     QOpenGLFunctions* func = QOpenGLContext::currentContext()->functions();
-    func->glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    func->glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
     func->glEnable(GL_DEPTH_TEST);
     glShadeModel(GL_FLAT);
     nFigure = draw(1.2f);
@@ -80,7 +80,6 @@ void IFigure::setAlphaTest(GLuint test, double value)
     alphaTestValue = value;
     nFigure = draw(1.2f);
     update();
-
 }
 
 void IFigure::setBlenderTest(GLuint sF, GLuint dF)

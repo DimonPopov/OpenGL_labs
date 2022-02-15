@@ -7,7 +7,9 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    setFixedSize(600, 400);
+    setWindowIcon(QIcon(":icon/image/mainIcon.png"));
+    setWindowTitle("OpenGl_lab1-2");
+    setFixedSize(800, 600);
     ControlPanel* mainScene = new ControlPanel();
     setCentralWidget(mainScene);
 }

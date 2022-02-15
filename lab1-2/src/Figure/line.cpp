@@ -7,7 +7,7 @@ Line::Line(QWidget* parent)
 }
 
 void Line::createFigure(GLfloat size)
-{
+{   
     glBegin(GL_LINES);
         glColor4f(0.0f, 1.0f, 0.0f, 0.5f);
         glVertex3f(0.0, size, 0.0);

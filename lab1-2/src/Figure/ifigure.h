@@ -34,8 +34,8 @@ protected:
     double alphaTestValue = 0.0;                            ///< значения сравнения для альфа-теста.
     GLint x = 0;                                            ///< координаты x угла для теста отсечения.
     GLint y = 0;                                            ///< координаты y угла для теста отсечения.
-    GLsizei w = 400;                                        ///< ширина отсекающего прямоугольника.
-    GLsizei h = 400;                                        ///< ширина отсекающего прямоугольника.
+    GLsizei w = width();                                        ///< ширина отсекающего прямоугольника.
+    GLsizei h = width();                                        ///< ширина отсекающего прямоугольника.
     GLuint blenderTestSFactor = GL_ZERO;                    ///< cпособ вычисления входящих факторов смешения RGBA.
     GLuint blenderTestDFactor = GL_ONE;                     ///< способ вычисления факторов смешения RGBA, уже находящихся в буфере кадра.
     virtual void createFigure(GLfloat size) = 0;
