@@ -62,7 +62,6 @@ void Bezier::drawBezierLine()
         }
         else
         {
-            // P = (1−t)2P1 + 2(1−t)tP2 + t2P3
             for (float t = 0; t <= (1 + step); t += step)
             {
                 float x = pow((1 - t), 2) * points[0].x() + 2 * (1 - t) * t * points[1].x() + pow(t, 2) * points[2].x();

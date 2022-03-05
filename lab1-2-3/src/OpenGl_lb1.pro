@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     Figure/bezier.cpp \
     Figure/cube.cpp \
+    Figure/fractal.cpp \
     Figure/ifigure.cpp \
     Figure/line.cpp \
     Figure/polygon.cpp \
@@ -18,18 +19,21 @@ SOURCES += \
     Figure/triangle.cpp \
     controlpanel.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    turtle.cpp
 
 HEADERS += \
     Figure/bezier.h \
     Figure/cube.h \
+    Figure/fractal.h \
     Figure/ifigure.h \
     Figure/line.h \
     Figure/polygon.h \
     Figure/pyramide.h \
     Figure/triangle.h \
     controlpanel.h \
-    mainwindow.h
+    mainwindow.h \
+    turtle.h
 
 TRANSLATIONS += \
     OpenGl_lb1_ru_RU.ts

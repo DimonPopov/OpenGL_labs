@@ -16,6 +16,7 @@
 #include "Figure/triangle.h"
 #include "Figure/polygon.h"
 #include "Figure/bezier.h"
+#include "Figure/fractal.h"
 
 #define KEY_LINES       ("GL_LINES")
 #define KEY_TRIANGLE    ("GL_TRIANGLES")
@@ -23,6 +24,7 @@
 #define KEY_POLYGON     ("GL_POLYGON")
 #define KEY_PYRAMIDE    ("GL_TRIANGLE_FAN")
 #define KEY_BEZIER      ("BEZIER")
+#define KEY_FRACTAL     ("FRACTAL")
 
 
 ControlPanel::ControlPanel(QWidget *parent)
@@ -44,7 +46,7 @@ void ControlPanel::initControlElement()
 
     QVBoxLayout* vLayout = new QVBoxLayout;
 
-    QLabel* lab1Label = new QLabel(tr("Primitives:"));
+    QLabel* lab1Label = new QLabel(tr("Figures:"));
     QComboBox* primitivesBox = new QComboBox;
 
     primitivesBox->addItem(KEY_LINES);
@@ -53,6 +55,7 @@ void ControlPanel::initControlElement()
     primitivesBox->addItem(KEY_POLYGON);
     primitivesBox->addItem(KEY_PYRAMIDE);
     primitivesBox->addItem(KEY_BEZIER);
+    primitivesBox->addItem(KEY_FRACTAL);
 
     connect(primitivesBox, &QComboBox::currentTextChanged, this, &ControlPanel::handlePrimitiveBoxChanged);
 
@@ -195,6 +198,8 @@ void ControlPanel::handlePrimitiveBoxChanged(QString text)
         currentFigure = new Cube();
     else if (text == KEY_BEZIER)
         currentFigure = new Bezier();
+    else if (text == KEY_FRACTAL)
+        currentFigure = new Fractal();
     else
         currentFigure = new Line();
 

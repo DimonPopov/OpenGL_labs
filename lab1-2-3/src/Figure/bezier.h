@@ -10,7 +10,7 @@ class Bezier : public IFigure
 private:
     QList<QPoint> points;           ///< набор точек.
     GLint r;                        ///< радиус точек.
-    GLint currentPoint;            ///< захваченная курсором точка.
+    GLint currentPoint;             ///< захваченная курсором точка.
     /**
      * @brief Отрисовка кривой Безье на основе точек из point
      */
